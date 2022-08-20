@@ -13,7 +13,7 @@
         app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
         android:orientation="vertical"
         tools:itemCount="5"
-        tools:listitem="@layout/item_calculate_currency"
+        tools:listitem="@layout/item_currency"
         />
 
 </FrameLayout>

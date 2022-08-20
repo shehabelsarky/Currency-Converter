@@ -3,13 +3,17 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/emoney_nav_graph"
-    app:startDestination="@id/EMoneyFragment">
+    app:startDestination="@id/CurrencyListFragment">
 
     <fragment
-        android:id="@+id/EMoneyFragment"
-        android:name="com.example.emoney.ui.fragment.emoney_list.EMoneyListFragment"
+        android:id="@+id/CurrencyListFragment"
+        android:name="com.example.emoney.ui.fragment.emoney_list.CurrencyListFragment"
         android:label="fragment_e_money"
-        tools:layout="@layout/fragment_e_money" />
+        tools:layout="@layout/fragment_currency_list" >
+        <action
+            android:id="@+id/action_CurrencyListFragment_to_currencyConverterFragment"
+            app:destination="@id/currencyConverterFragment" />
+    </fragment>
     <fragment
         android:id="@+id/currencyConverterFragment"
         android:name="com.example.emoney.ui.fragment.emoney_update.CurrencyConverterFragment"

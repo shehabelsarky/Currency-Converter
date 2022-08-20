@@ -7,7 +7,6 @@ import com.example.emoney.R
 import com.example.emoney.databinding.FragmentCurrencyConverterBinding
 import com.example.emoney.ui.fragment.viewmodel.CurrencyConverterViewModel
 import com.examples.core.ui.fragment.BaseFragment
-import com.examples.core.ui.fragment.BaseUiHelper
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 
@@ -17,17 +16,34 @@ import kotlinx.coroutines.ExperimentalCoroutinesApi
 @ExperimentalCoroutinesApi
 @AndroidEntryPoint
 class CurrencyConverterFragment :
-    BaseFragment<FragmentCurrencyConverterBinding, CurrencyConverterViewModel, BaseUiHelper>(
-        FragmentCurrencyConverterBinding::inflate
-    ) {
+    BaseFragment<FragmentCurrencyConverterBinding, CurrencyConverterViewModel, CurrencyConverterUiHelper>(
+        FragmentCurrencyConverterBinding::inflate) {
 
     override val viewModel: CurrencyConverterViewModel by navGraphViewModels(R.id.emoney_nav_graph) { defaultViewModelProviderFactory }
-    override lateinit var fragmentHelper: BaseUiHelper
+    override lateinit var fragmentHelper: CurrencyConverterUiHelper
+    private lateinit var currencyUpdateListAdapter: CurrencyUpdateListAdapter
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-
+        setCurrencyList()
+        observeLatestCurrenciesRate()
     }
 
+    private fun setCurrencyList() {
+        currencyUpdateListAdapter = CurrencyUpdateListAdapter { text, position ->
+            val rate = fragmentHelper.calculateCurrencyRate(
+                text,
+                viewModel.getSelectedCurrencyList()[position].rate
+            )
+            viewModel.getSelectedCurrencyList()[position].rate = rate
+        }
+        binding.rvCurrencyList.adapter = currencyUpdateListAdapter
+    }
 
+    private fun observeLatestCurrenciesRate() =
+        with(viewModel) {
+            latestCurrencyRateLiveData.observe(viewLifecycleOwner) {
+                currencyUpdateListAdapter.submitList(it)
+            }
+        }
 }
