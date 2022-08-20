@@ -7,6 +7,7 @@ import com.example.emoney.R
 import com.example.emoney.databinding.FragmentCurrencyConverterBinding
 import com.example.emoney.ui.fragment.viewmodel.CurrencyConverterViewModel
 import com.examples.core.ui.fragment.BaseFragment
+import com.examples.core.utils.showToast
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 import javax.inject.Inject
@@ -33,7 +34,13 @@ class CurrencyConverterFragment :
     }
 
     private fun setCurrencyList() {
-        currencyUpdateListAdapter = CurrencyUpdateListAdapter()
+        currencyUpdateListAdapter = CurrencyUpdateListAdapter{ text,rate ->
+            requireContext().showToast(
+                fragmentHelper.calculateCurrencyRate(
+                    text,rate
+                )
+            )
+        }
         binding.rvCurrencyList.adapter = currencyUpdateListAdapter
     }
 

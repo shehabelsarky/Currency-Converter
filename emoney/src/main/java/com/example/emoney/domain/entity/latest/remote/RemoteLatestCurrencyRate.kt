@@ -16,7 +16,6 @@ class RemoteLatestCurrencyRate {
     @SerializedName("rates")
     @Expose
     var rates: JsonElement? = null
-//    var rates: Rates? = null
 
     @SerializedName("success")
     @Expose
