@@ -1,4 +1,9 @@
 <resources>
     <string name="app_name">Emoney</string>
     <string name="currency_converter">CURRENCY CONVERTER</string>
+    <string name="GBP">GBP</string>
+    <string name="JPY">JPY</string>
+    <string name="USD">USD</string>
+    <string name="EGP">EGP</string>
+    <string name="SAR">SAR</string>
 </resources>

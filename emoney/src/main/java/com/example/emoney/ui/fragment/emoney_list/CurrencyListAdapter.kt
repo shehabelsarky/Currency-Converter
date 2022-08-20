@@ -1,9 +1,11 @@
 package com.example.emoney.ui.fragment.emoney_list
 
 import android.content.Context
+import android.content.res.Resources
 import com.example.emoney.databinding.ItemCurrencyBinding
 import com.example.emoney.domain.entity.latest.local.LatestCurrencyRate
 import com.examples.core.ui.adapter.diffutilsAdapter.BaseRecyclerAdapter
+import com.examples.core.utils.getStringByIdName
 
 /**
  * Created by Shehab Elsarky.
@@ -20,7 +22,7 @@ class CurrencyListAdapter(
         position: Int
     ) {
         binding.apply {
-            tvCurrencyName.text = item.countryCode
+            tvCurrencyName.text = root.context.getStringByIdName(item.countryCode)
             tvDate.text = item.date
             tvRate.text = item.rate
 

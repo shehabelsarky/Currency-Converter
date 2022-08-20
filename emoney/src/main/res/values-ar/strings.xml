@@ -1,4 +1,9 @@
 <resources>
     <string name="app_name">Emoney</string>
     <string name="currency_converter">محول العملات</string>
+    <string name="GBP">دينار</string>
+    <string name="JPY">ين يابانى</string>
+    <string name="USD">دولار امريكى</string>
+    <string name="EGP">جنيه مصرى</string>
+    <string name="SAR">ريال سعودى</string>
 </resources>

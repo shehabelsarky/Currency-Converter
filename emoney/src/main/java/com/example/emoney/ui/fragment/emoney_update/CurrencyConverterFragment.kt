@@ -21,6 +21,7 @@ class CurrencyConverterFragment :
         FragmentCurrencyConverterBinding::inflate) {
 
     override val viewModel: CurrencyConverterViewModel by navGraphViewModels(R.id.emoney_nav_graph) { defaultViewModelProviderFactory }
+
     @Inject
     override lateinit var fragmentHelper: CurrencyConverterUiHelper
     private lateinit var currencyUpdateListAdapter: CurrencyUpdateListAdapter
@@ -32,13 +33,7 @@ class CurrencyConverterFragment :
     }
 
     private fun setCurrencyList() {
-        currencyUpdateListAdapter = CurrencyUpdateListAdapter { text, position ->
-            val rate = fragmentHelper.calculateCurrencyRate(
-                text,
-                viewModel.getSelectedCurrencyList()[position].rate
-            )
-            viewModel.getSelectedCurrencyList()[position].rate = rate
-        }
+        currencyUpdateListAdapter = CurrencyUpdateListAdapter()
         binding.rvCurrencyList.adapter = currencyUpdateListAdapter
     }
 

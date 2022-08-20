@@ -1,18 +1,16 @@
 package com.example.emoney.ui.fragment.emoney_update
 
 import android.content.Context
-import android.view.inputmethod.EditorInfo
 import com.example.emoney.databinding.ItemCalculateCurrencyBinding
 import com.example.emoney.domain.entity.latest.local.LatestCurrencyRate
 import com.examples.core.ui.adapter.diffutilsAdapter.BaseRecyclerAdapter
+import com.examples.core.utils.getStringByIdName
 
 
 /**
  * Created by Shehab Elsarky.
  */
-class CurrencyUpdateListAdapter(
-    private var mListener: (text: String, position: Int) -> Unit
-) :
+class CurrencyUpdateListAdapter() :
     BaseRecyclerAdapter<ItemCalculateCurrencyBinding, LatestCurrencyRate>(
         ItemCalculateCurrencyBinding::inflate,
         { oldItem, newItem -> oldItem.countryCode == newItem.countryCode }) {
@@ -24,7 +22,7 @@ class CurrencyUpdateListAdapter(
         position: Int
     ) {
         binding.apply {
-            tvCurrencyName.text = item.countryCode
+            tvCurrencyName.text = root.context.getStringByIdName(item.countryCode)
             etRate.setText(item.rate)
         }
     }

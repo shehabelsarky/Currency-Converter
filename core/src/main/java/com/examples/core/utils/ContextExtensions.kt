@@ -7,6 +7,7 @@ import android.content.ClipboardManager
 import android.content.Context
 import android.content.Intent
 import android.content.pm.PackageManager
+import android.content.res.Resources
 import android.net.Uri
 import androidx.annotation.ColorRes
 import androidx.annotation.DrawableRes
@@ -16,6 +17,12 @@ import com.examples.core.R
 /**
  * Created by Nader Nabil on 5/11/2020.
  */
+
+
+fun Context.getStringByIdName(idName: String?): String? {
+    val res: Resources = resources
+    return res.getString(res.getIdentifier(idName, "string", packageName))
+}
 
 fun Context.startBrowserIntent(url: String) {
     if (url.isEmpty()) {

@@ -34,19 +34,11 @@ abstract class BaseActivity : AppCompatActivity(), LoadingListener, ToolbarListe
     open var layoutRes = R.layout.activity_base
 
     override fun onCreate(savedInstanceState: Bundle?) {
-        if (!VersionUtils.isOreoAndLater) {
-            LanguageUtils.setLocale(this)
-        }
         super.onCreate(savedInstanceState)
         setContentView(layoutRes)
         initLoadingAlertDialog()
         setNavFragment()
     }
-
-    override fun attachBaseContext(base: Context) {
-        super.attachBaseContext(LocaleUtils.onAttach(base))
-    }
-
 
     private fun setNavFragment() {
         navFragment =
