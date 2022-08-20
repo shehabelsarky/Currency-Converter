@@ -1,0 +1,4 @@
+include ':navigation'
+include ':core'
+include ':app'
+include ':emoney'
