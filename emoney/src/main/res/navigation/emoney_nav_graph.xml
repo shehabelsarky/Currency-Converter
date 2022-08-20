@@ -10,4 +10,9 @@
         android:name="com.example.emoney.ui.fragment.emoney_list.EMoneyListFragment"
         android:label="fragment_e_money"
         tools:layout="@layout/fragment_e_money" />
+    <fragment
+        android:id="@+id/currencyConverterFragment"
+        android:name="com.example.emoney.ui.fragment.emoney_update.CurrencyConverterFragment"
+        android:label="fragment_currency_converter"
+        tools:layout="@layout/fragment_currency_converter" />
 </navigation>
