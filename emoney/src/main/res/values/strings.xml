@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">Emoney</string>
+    <string name="currency_converter">CURRENCY CONVERTER</string>
 </resources>

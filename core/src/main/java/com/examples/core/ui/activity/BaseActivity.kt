@@ -33,8 +33,6 @@ abstract class BaseActivity : AppCompatActivity(), LoadingListener, ToolbarListe
     @LayoutRes
     open var layoutRes = R.layout.activity_base
 
-
-
     override fun onCreate(savedInstanceState: Bundle?) {
         if (!VersionUtils.isOreoAndLater) {
             LanguageUtils.setLocale(this)
@@ -56,21 +54,16 @@ abstract class BaseActivity : AppCompatActivity(), LoadingListener, ToolbarListe
         navController = navFragment.navController
         if (::bundle.isInitialized) navController.setGraph(navGraphResourceId, bundle)
         else navController.setGraph(navGraphResourceId)
-
-
-
     }
 
 
     override fun showActivityToolbar() {
         toolbarBase?.visibility = View.VISIBLE
-
     }
 
     override fun hideActivityToolbar() {
         toolbarBase?.visibility = View.GONE
     }
-
 
 
     override fun setActivityToolbarTitle(title: String, gravity: Int?) {

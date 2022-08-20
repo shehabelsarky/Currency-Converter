@@ -37,7 +37,6 @@ abstract class BaseFragment<VB : ViewBinding, VM : BaseViewModel, HelperClass : 
 
     protected var toolbarListener: ToolbarListener? = null
 
-
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?
     ): View? {
@@ -56,6 +55,10 @@ abstract class BaseFragment<VB : ViewBinding, VM : BaseViewModel, HelperClass : 
 
     fun setActivityToolbarTitle(title: String, gravity: Int? = null) {
         toolbarListener?.setActivityToolbarTitle(title, gravity)
+    }
+
+    fun showActivityToolbar(){
+        toolbarListener?.showActivityToolbar()
     }
 
     fun hideActivityToolbar() {

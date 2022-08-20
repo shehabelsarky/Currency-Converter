@@ -15,7 +15,7 @@ import javax.inject.Inject
  */
 @ExperimentalCoroutinesApi
 @HiltViewModel
-class EMoneyListViewModel @Inject constructor(
+class CurrencyListViewModel @Inject constructor(
     private val latestCurrencyRateUseCase: LatestCurrencyRateUseCase
 ) : BaseViewModel() {
 

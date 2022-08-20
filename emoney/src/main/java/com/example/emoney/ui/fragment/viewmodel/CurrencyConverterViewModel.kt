@@ -18,13 +18,16 @@ class CurrencyConverterViewModel @Inject constructor(
     private val selectedCurrencyRateUseCase: SelectedCurrencyRateUseCase
 ) : BaseViewModel() {
 
-    private val selectedCurrenciesList = mutableListOf<LatestCurrencyRate>()
+    private var selectedCurrenciesList = mutableListOf<LatestCurrencyRate>()
     private val latestCurrencyRateMutableLiveData = MutableLiveData<List<LatestCurrencyRate>>()
     val latestCurrencyRateLiveData: LiveData<List<LatestCurrencyRate>> =
         latestCurrencyRateMutableLiveData
 
     fun addSelectedCurrency(currencyRate: LatestCurrencyRate) {
-        selectedCurrencyRateUseCase.setSelectedCurrencyList(selectedCurrenciesList, currencyRate)
+        selectedCurrencyRateUseCase.setSelectedCurrencyList(
+            selectedCurrenciesList,
+            currencyRate
+        )
         latestCurrencyRateMutableLiveData.value = selectedCurrenciesList
     }
 

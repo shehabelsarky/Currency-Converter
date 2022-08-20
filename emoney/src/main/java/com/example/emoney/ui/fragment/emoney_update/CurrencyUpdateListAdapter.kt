@@ -26,11 +26,6 @@ class CurrencyUpdateListAdapter(
         binding.apply {
             tvCurrencyName.text = item.countryCode
             etRate.setText(item.rate)
-            etRate.setOnEditorActionListener { _, i, _ ->
-                if (i == EditorInfo.IME_ACTION_DONE)
-                    mListener(etRate.text.toString(), position)
-                false
-            }
         }
     }
 }

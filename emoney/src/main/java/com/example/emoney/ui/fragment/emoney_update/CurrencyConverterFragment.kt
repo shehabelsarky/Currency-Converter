@@ -9,6 +9,7 @@ import com.example.emoney.ui.fragment.viewmodel.CurrencyConverterViewModel
 import com.examples.core.ui.fragment.BaseFragment
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.ExperimentalCoroutinesApi
+import javax.inject.Inject
 
 /**
  * Created by Shehab Elsarky.
@@ -20,6 +21,7 @@ class CurrencyConverterFragment :
         FragmentCurrencyConverterBinding::inflate) {
 
     override val viewModel: CurrencyConverterViewModel by navGraphViewModels(R.id.emoney_nav_graph) { defaultViewModelProviderFactory }
+    @Inject
     override lateinit var fragmentHelper: CurrencyConverterUiHelper
     private lateinit var currencyUpdateListAdapter: CurrencyUpdateListAdapter
 

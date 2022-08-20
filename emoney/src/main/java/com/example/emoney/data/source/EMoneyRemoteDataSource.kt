@@ -1,6 +1,6 @@
 package com.example.emoney.data.source
 
-import com.example.emoney.domain.entity.latest.response.LatestCurrencyRateResponse
+import com.example.emoney.domain.entity.latest.remote.RemoteLatestCurrencyRate
 
 
 /**
@@ -10,5 +10,5 @@ interface EMoneyRemoteDataSource {
 
     suspend fun getLatestCurrencyRate(
         symbols: String, base: String
-    ): LatestCurrencyRateResponse
+    ): RemoteLatestCurrencyRate
 }

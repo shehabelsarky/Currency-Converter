@@ -2,13 +2,14 @@ package com.example.emoney.ui.fragment.emoney_list
 
 import android.os.Bundle
 import android.view.View
+import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.navGraphViewModels
 import com.example.emoney.R
 import com.example.emoney.databinding.FragmentCurrencyListBinding
 import com.example.emoney.domain.entity.latest.query.LatestCurrencyQuery
 import com.example.emoney.ui.fragment.viewmodel.CurrencyConverterViewModel
-import com.example.emoney.ui.fragment.viewmodel.EMoneyListViewModel
+import com.example.emoney.ui.fragment.viewmodel.CurrencyListViewModel
 import com.examples.core.ui.fragment.BaseFragment
 import com.examples.core.ui.fragment.BaseUiHelper
 import dagger.hilt.android.AndroidEntryPoint
@@ -20,17 +21,19 @@ import kotlinx.coroutines.ExperimentalCoroutinesApi
 @ExperimentalCoroutinesApi
 @AndroidEntryPoint
 class CurrencyListFragment :
-    BaseFragment<FragmentCurrencyListBinding, EMoneyListViewModel, BaseUiHelper>(
+    BaseFragment<FragmentCurrencyListBinding, CurrencyListViewModel, BaseUiHelper>(
         FragmentCurrencyListBinding::inflate
     ) {
 
     private val sharedViewModel: CurrencyConverterViewModel by navGraphViewModels(R.id.emoney_nav_graph) { defaultViewModelProviderFactory }
-    override lateinit var viewModel: EMoneyListViewModel
+    override val viewModel: CurrencyListViewModel by viewModels()
     override lateinit var fragmentHelper: BaseUiHelper
     private lateinit var currencyListAdapter: CurrencyListAdapter
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        showActivityToolbar()
+        setActivityToolbarTitle(getString(R.string.currency_converter))
         setCurrencyList()
         observeLatestCurrenciesRate()
     }

@@ -17,13 +17,13 @@ class LatestCurrencyRateMapper @Inject constructor() :
     ModelMapper<RemoteLatestCurrencyRate, List<LatestCurrencyRate>> {
 
     override fun convert(from: RemoteLatestCurrencyRate?): List<LatestCurrencyRate> {
-        val currentDate = getCurrentDate()
+        val currentDate = from?.date
         val latestCurrencyRateList: List<LatestCurrencyRate>? = getRates(from?.rates)
             ?.entries
             ?.map { e ->
                 val latestCurrencyRate = LatestCurrencyRate()
                 latestCurrencyRate.apply {
-                    date = currentDate
+                    date = currentDate?: getCurrentDate()
                     countryCode = e.key
                     rate = e.value
                 }

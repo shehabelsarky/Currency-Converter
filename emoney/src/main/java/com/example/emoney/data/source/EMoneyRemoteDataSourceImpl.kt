@@ -1,7 +1,7 @@
 package com.example.emoney.data.source
 
 import com.example.emoney.data.restful.EMoneyApi
-import com.example.emoney.domain.entity.latest.response.LatestCurrencyRateResponse
+import com.example.emoney.domain.entity.latest.remote.RemoteLatestCurrencyRate
 import javax.inject.Inject
 
 /**
@@ -14,7 +14,7 @@ class EMoneyRemoteDataSourceImpl @Inject constructor(
     override suspend fun getLatestCurrencyRate(
         symbols: String,
         base: String
-    ): LatestCurrencyRateResponse {
+    ): RemoteLatestCurrencyRate {
         return eMoneyApi.getLatestCurrencyRate(symbols = symbols, base = base)
     }
 }

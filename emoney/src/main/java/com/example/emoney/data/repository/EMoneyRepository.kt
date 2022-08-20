@@ -1,6 +1,6 @@
 package com.example.emoney.data.repository
 
-import com.example.emoney.domain.entity.latest.response.LatestCurrencyRateResponse
+import com.example.emoney.domain.entity.latest.remote.RemoteLatestCurrencyRate
 
 /**
  * Created by Shehab Elsarky.
@@ -8,5 +8,5 @@ import com.example.emoney.domain.entity.latest.response.LatestCurrencyRateRespon
 interface EMoneyRepository {
     suspend fun getLatestCurrencyRate(
         symbols: String, base: String
-    ): LatestCurrencyRateResponse
+    ): RemoteLatestCurrencyRate
 }
